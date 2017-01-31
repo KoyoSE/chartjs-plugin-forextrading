@@ -61,8 +61,8 @@ var defaultDatasets = {
 var ftChart = function (ctx, config, datasets) {
 
 	datasets = helpers.configMerge(
-		datasets,
-		defaultDatasets
+		defaultDatasets,
+		datasets
 	)
 
 	//format
@@ -81,15 +81,8 @@ var ftChart = function (ctx, config, datasets) {
 		type: 'bar',
 		data: {
 			labels: datasets.volume.data.labels,
-			datasets: [{
-				type: 'bar',
-				label: 'Volume',
-				yAxisID: "y-axis-1",
-				backgroundColor: color(datasets.volume.color).alpha(datasets.volume.fill).rgbString(),
-				borderColor: color(datasets.volume.color).alpha(datasets.volume.fill).rgbString(),
-				borderWidth: 3,
-				data: datasets.volume.data.data,
-			}, {
+			datasets: [
+			 {
 				type: 'line',
 				label: 'Lasts',
 				yAxisID: "y-axis-2",
@@ -121,6 +114,14 @@ var ftChart = function (ctx, config, datasets) {
 				borderColor: color(datasets.buys.color).alpha(0).rgbString(),
 				fill: false,
 				data: datasets.buys.data,
+			},{
+				type: 'bar',
+				label: 'Volume',
+				yAxisID: "y-axis-1",
+				backgroundColor: color(datasets.volume.color).alpha(datasets.volume.fill).rgbString(),
+				borderColor: color(datasets.volume.color).alpha(datasets.volume.fill).rgbString(),
+				borderWidth: 3,
+				data: datasets.volume.data.data,
 			}
 			]
 		},
