@@ -209,6 +209,14 @@ Chart.plugins.register({
 		clipArea(ctx, me.chartArea);
 		//------
 
+	},
+
+	afterDatasetsDraw: function (chartInstance, easing) {
+
+		var me = chartInstance;
+		var helpers = Chart.helpers;
+		var ctx = me.chart.ctx;
+
 		var drawFill = function (instance, baseInstance) {
 
 			var ctx = instance._chart.ctx;
@@ -223,6 +231,11 @@ Chart.plugins.register({
 				ctx.save();
 				// Chart.canvasHelpers.clipArea(ctx, me.chartArea);  //TODO : for chart.js upper v2.5.0.
 				ctx.beginPath();
+		
+				ctx.fillStyle = vm.backgroundColor;
+				ctx.strokeStyle = vm.borderColor;
+				ctx.lineWidth = vm.borderWidth;
+
 				ctx.moveTo(basePoints[0]._view.x, basePoints[0]._view.y);
 				for (index = 0; index < points.length; ++index) {
 					current = points[index];
@@ -262,12 +275,9 @@ Chart.plugins.register({
 		drawFill(instance[1], instance[2]); // sells fill
 		drawFill(instance[0], instance[2]); // buys fill
 
-	},
-
-	afterDatasetsDraw: function (chartInstance) {
 		//--- TODO:for below chart.js v2.4.x ---
-		var me = chartInstance;
-		var ctx = me.chart.ctx;
+		// var me = chartInstance;
+		// var ctx = me.chart.ctx;
 		var unclipArea = function (ctx) {
 			ctx.restore();
 		};
