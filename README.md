@@ -1,5 +1,6 @@
 # Introduction 
 Forex trading chart plugin for chart.js
+(In development)
 
 # Getting Started
 1.	Installation process
@@ -7,3 +8,5 @@ Forex trading chart plugin for chart.js
 3.	Latest releases
 4.	API references
 
+# Demo
+[jsFiddle](https://jsfiddle.net/KoyoSE/65v8kqdv/)
